@@ -13,9 +13,9 @@ const RenderCards = ({data, title}) => {
 
 const Home = () => {
 
-  const [loading, setLoading] = useState(true  );
+  const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState([null]);
-  const [searchText, setSearchText] = useState("ss");
+  const [searchText, setSearchText] = useState("");
 
   return (
     <section className="max-w-7xl mx-auto">
@@ -37,16 +37,17 @@ const Home = () => {
             <h2 className="font-medium text-[#666e75] text-xl mb-3">Showing results for<span className='text-[#222328]'>{searchText}</span></h2>
           )}
           <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+            {searchText ? (
             <RenderCards
-            data="searchedResults"
-            title='No posts found' 
+            data={[]}
+            title='No search found' 
             />
             ) : (
               <RenderCards
               data={[]}
               title='No posts found'
               />
-            )
+            )}
           </div>
           </>
         )}

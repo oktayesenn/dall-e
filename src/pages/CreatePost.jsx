@@ -26,9 +26,13 @@ const CreatePost = () => {
   }
 
   const handleChange = (e) => {
+    setForm({...form, [e.target.name]: e.target.value})
   }
   const handleSupriseMe = () => {
+    const randomPrompt = getRandomPrompt(form.prompt);
+    setForm({...form, prompt: randomPrompt})
   }
+
 
 
 
@@ -52,8 +56,8 @@ const CreatePost = () => {
           <FormField
             LabelName='Prompt'
             type='text'
-            placeholder='Prompt'
-            value={form.name}
+            placeholder='A Space Shuttle flying above Cape Town, digital art'
+            value={form.prompt}
             handleChange={handleChange}
             isSupriseMe
             handleSupriseMe={handleSupriseMe}
